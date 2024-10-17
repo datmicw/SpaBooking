@@ -51,7 +51,7 @@ namespace BookingSPA.DAL
                 throw new ArgumentNullException(nameof(service));
             using (SqlConnection connection = dbConnection.GetConnection())
             {
-                string query = "DELETE Service WHERE Id = @Id";
+                string query = "DELETE FROM Service WHERE Id = @Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", service.Id);
@@ -66,7 +66,7 @@ namespace BookingSPA.DAL
 
             using (SqlConnection connection = dbConnection.GetConnection())
             {
-                string query = "SELECT * FROM Service";
+                string query = "SELECT Id, Name, Price FROM Service";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
