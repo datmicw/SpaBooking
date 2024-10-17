@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BookingSPA.Forms;
 
 namespace BookingSPA
 {
@@ -11,7 +12,7 @@ namespace BookingSPA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EmployeeForm());
+            Application.Run(new ServiceForm());
         }
     }
 }
