@@ -5,7 +5,7 @@ namespace BookingSPA.DAL
 {
     public class DbConnection
     {
-        private readonly string connectionString = "Data Source=DESKTOP-2TTEBT8;Initial Catalog=SPA;Integrated Security=True;TrustServerCertificate=True;";
+        private readonly string connectionString = "Data Source=DESKTOP-2TTEBT8;Initial Catalog=SPA;Integrated Security=True;TrustServerCertificate=True";
 
         public SqlConnection GetConnection()
         {

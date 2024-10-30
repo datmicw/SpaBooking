@@ -49,12 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BookingBLL.cs" />
     <Compile Include="BLL\EmployeeBLL.cs" />
     <Compile Include="BLL\ServiceBLL.cs" />
     <Compile Include="DAL\BookingDAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\ServiceDAL.cs" />
+    <Compile Include="Entities\BookingEnti.cs" />
     <Compile Include="Entities\ServiceEnti.cs" />
     <Compile Include="Forms\Booking.cs">
       <SubType>Form</SubType>

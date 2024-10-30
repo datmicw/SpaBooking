@@ -45,6 +45,7 @@
             this.lb_Price = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
+            this.txt_status = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,6 +135,7 @@
             this.btn_AddBooking.TabIndex = 9;
             this.btn_AddBooking.Text = "ADD BOOKING";
             this.btn_AddBooking.UseVisualStyleBackColor = true;
+            this.btn_AddBooking.Click += new System.EventHandler(this.btn_AddBooking_Click);
             // 
             // btn_update
             // 
@@ -196,11 +198,19 @@
             this.lbl_total.Size = new System.Drawing.Size(0, 15);
             this.lbl_total.TabIndex = 16;
             // 
+            // txt_status
+            // 
+            this.txt_status.Location = new System.Drawing.Point(354, 149);
+            this.txt_status.Name = "txt_status";
+            this.txt_status.Size = new System.Drawing.Size(121, 20);
+            this.txt_status.TabIndex = 17;
+            // 
             // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txt_status);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lb_Price);
@@ -246,5 +256,6 @@
         private System.Windows.Forms.Label lb_Price;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.TextBox txt_status;
     }
 }
