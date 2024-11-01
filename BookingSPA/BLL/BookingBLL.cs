@@ -18,14 +18,19 @@ namespace BookingSPA.BLL
             ValidateBooking(book);
             bookingDAL.AddBooking(book);
         }
+        public void UpdateBooking(BookingEnti book)
+        {
+            ValidateBooking(book);
+            bookingDAL.UpdateBooking(book);
+        }
 
         private void ValidateBooking(BookingEnti book)
         {
             if (string.IsNullOrWhiteSpace(book.CustomerName))
-                throw new ArgumentException("Mã khách hàng phải lớn hơn 0.");
+                throw new ArgumentException("Name Of Customer not empty !");
 
             if (string.IsNullOrWhiteSpace(book.Status))
-                throw new ArgumentException("Mã nha vien phải lớn hơn 0");
+                throw new ArgumentException("Status not empty !");
 
         }
     }

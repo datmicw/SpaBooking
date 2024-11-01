@@ -40,13 +40,13 @@
             this.btn_AddBooking = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgt_booking = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.lb_Price = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
             this.txt_status = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgt_booking)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -145,6 +145,7 @@
             this.btn_update.TabIndex = 10;
             this.btn_update.Text = "UPDATE";
             this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_delete
             // 
@@ -155,13 +156,14 @@
             this.btn_delete.Text = "DELETE";
             this.btn_delete.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgt_booking
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(42, 197);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(687, 230);
-            this.dataGridView1.TabIndex = 12;
+            this.dgt_booking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgt_booking.Location = new System.Drawing.Point(42, 197);
+            this.dgt_booking.Name = "dgt_booking";
+            this.dgt_booking.Size = new System.Drawing.Size(687, 230);
+            this.dgt_booking.TabIndex = 12;
+            this.dgt_booking.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgt_booking_CellClick);
             // 
             // label6
             // 
@@ -215,7 +217,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lb_Price);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgt_booking);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_AddBooking);
@@ -231,7 +233,7 @@
             this.Name = "Booking";
             this.Text = "Booking";
             this.Load += new System.EventHandler(this.Booking_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgt_booking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +253,7 @@
         private System.Windows.Forms.Button btn_AddBooking;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgt_booking;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lb_Price;
         private System.Windows.Forms.Label label7;

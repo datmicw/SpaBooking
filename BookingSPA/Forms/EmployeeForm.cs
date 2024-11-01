@@ -41,13 +41,15 @@ namespace BookingSPA
             {
                 employeeBLL.AddEmployee(employee);
                 MessageBox.Show("Nhân viên đã được thêm thành công");
+                LoadEmployeeData(); // Tải lại dữ liệu vào DataGridView
                 ClearField();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
         }
+
         private void ClearField()
         {
             txt_fullname.Clear();

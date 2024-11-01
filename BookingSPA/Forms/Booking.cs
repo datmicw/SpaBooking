@@ -12,6 +12,7 @@ namespace BookingSPA.Forms
         private BookingDAL bookingDAL;
         private ServiceDAL serviceDAL;
         private EmployeeDAL employeeDAL;
+        private int selectedId;
 
         public Booking()
         {
@@ -19,8 +20,16 @@ namespace BookingSPA.Forms
             bookingDAL = new BookingDAL();
             serviceDAL = new ServiceDAL();
             employeeDAL = new EmployeeDAL();
-        }
+            dgt_booking.CellClick += dgt_booking_CellClick;
+            LoadBookingData();
 
+        }
+        private void LoadBookingData()
+        {
+            var book = bookingDAL.GetAllBooking();
+            dgt_booking.DataSource = book;
+            dgt_booking.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
         private void LoadServiceNames()
         {
             try
@@ -69,6 +78,8 @@ namespace BookingSPA.Forms
         {
             LoadServiceNames();
             LoadStaff();
+            LoadBookingData();
+            dgt_booking.CellClick += dgt_booking_CellClick;
         }
 
         private void cbx_serviceName_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,10 +108,6 @@ namespace BookingSPA.Forms
                     decimal total = price * time;
                     lbl_total.Text = $"{total} VNĐ";
                 }
-                else
-                {
-                    MessageBox.Show("Vui lòng nhập thời gian hợp lệ.");
-                }
             }
             else
             {
@@ -114,6 +121,7 @@ namespace BookingSPA.Forms
             try
             {
                 decimal totalAmount = decimal.Parse(lbl_total.Text.Replace(" VNĐ", "").Trim());
+
                 var booking = new BookingEnti
                 {
                     CustomerName = txt_custumerName.Text,
@@ -127,11 +135,57 @@ namespace BookingSPA.Forms
 
                 bookingDAL.AddBooking(booking); 
                 MessageBox.Show("Đặt lịch thành công!");
+                LoadBookingData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hãy điền đầy đủ thông tin ");
+            }
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal totalAmount = decimal.Parse(lbl_total.Text.Replace(" VNĐ", "").Trim());
+
+                var booking = new BookingEnti
+                {
+                    Id = selectedId,
+                    CustomerName = txt_custumerName.Text,
+                    ServiceName = cbx_serviceName.SelectedItem?.ToString(),
+                    StaffName = cbx_staff.SelectedItem?.ToString(),
+                    BookingDate = DateTime.Now,
+                    Status = txt_status.Text,
+                    TotalAmount = totalAmount,
+                    Time = int.TryParse(txt_Time.Text, out int time) ? time : 0
+                };
+
+                bookingDAL.UpdateBooking(booking);
+                MessageBox.Show("Cập nhật lịch thành công!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+                MessageBox.Show("Lỗi khi cập nhật lịch: " + ex.Message);
             }
         }
+
+        private void dgt_booking_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo hàng được nhấn là hợp lệ
+            {
+                DataGridViewRow row = dgt_booking.Rows[e.RowIndex];
+
+                // Kiểm tra và gán giá trị cho các trường
+                txt_custumerName.Text = row.Cells["CustomerName"].Value?.ToString();
+                cbx_serviceName.SelectedItem = row.Cells["ServiceName"].Value?.ToString();
+                cbx_staff.SelectedItem = row.Cells["StaffName"].Value?.ToString();
+                txt_status.Text = row.Cells["Status"].Value?.ToString();
+                txt_Time.Text = row.Cells["Time"].Value?.ToString();
+                lbl_total.Text = row.Cells["TotalAmount"].Value?.ToString();
+                selectedId = Convert.ToInt32(row.Cells["Id"].Value);
+            }
+        }
+
     }
 }
